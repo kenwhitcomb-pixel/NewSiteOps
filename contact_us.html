@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact Us | The Greater First Baptist Church</title>
+<link href="styles.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Open+Sans:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        .contact-hero {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5aa0 100%);
+            color: white;
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+
+        .contact-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .contact-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-section {
+            padding: 4rem 0;
+            background-color: #f9f9f9;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .contact-info h2 {
+            color: #1e3a5f;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-item {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-item h3 {
+            color: #2c5aa0;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-item p {
+            color: #555;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .info-item a {
+            color: #2c5aa0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .info-item a:hover {
+            color: #1e3a5f;
+        }
+
+        .contact-form-container {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .contact-form-container h2 {
+            color: #1e3a5f;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.875rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Open Sans', sans-serif;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #2c5aa0;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .form-group.required label::after {
+            content: " *";
+            color: #ee5a6f;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #2c5aa0 0%, #1e3a5f 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(44, 90, 160, 0.4);
+        }
+
+        .map-section {
+            padding: 3rem 0;
+            background-color: white;
+        }
+
+        .map-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .map-container h2 {
+            color: #1e3a5f;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        @media (max-width: 968px) {
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation -->
+<div id="site-header"></div>
+<!-- Contact Hero -->
+<section class="contact-hero">
+<div class="container">
+<h1>Contact Us</h1>
+<p>We'd love to hear from you! Reach out with questions, prayer requests, or to learn more about our church family.</p>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="contact-section">
+<div class="contact-wrapper">
+<!-- Contact Information -->
+<div class="contact-info">
+<h2>Get In Touch</h2>
+<div class="info-item">
+<h3>Address</h3>
+<p>The Greater First Baptist Church<br/>
+                    Mount Pleasant Plains<br/>
+                    Washington, DC</p>
+</div>
+<div class="info-item">
+<h3>Phone</h3>
+<p><a href="tel:2024626127">202-462-6127</a></p>
+</div>
+<div class="info-item">
+<h3>Fax</h3>
+<p>202-462-8410</p>
+</div>
+<div class="info-item">
+<h3>Email</h3>
+<p><a href="mailto:info@thegfbcdc.org">info@thegfbcdc.org</a></p>
+</div>
+<div class="info-item">
+<h3>Office Hours</h3>
+<p>Monday - Friday: 9:00 AM - 4:00 PM<br/>
+                    Saturday: By Appointment<br/>
+                    Sunday: Worship Services</p>
+</div>
+</div>
+<!-- Contact Form -->
+<div class="contact-form-container">
+<h2>Send Us a Message</h2>
+<form action="https://formspree.io/f/mgolekvw" id="contactForm" method="POST">
+<input name="_to" type="hidden" value="info@thegfbcdc.org"/>
+<input name="_subject" type="hidden" value="New Contact Form Submission from GFBC Website"/>
+<input name="_next" type="hidden" value="thank-you.html"/>
+<div class="form-group required">
+<label for="name">Full Name</label>
+<input id="name" name="name" required="" type="text"/>
+</div>
+<div class="form-group required">
+<label for="email">Email Address</label>
+<input id="email" name="email" required="" type="email"/>
+</div>
+<div class="form-group">
+<label for="phone">Phone Number</label>
+<input id="phone" name="phone" type="tel"/>
+</div>
+<div class="form-group required">
+<label for="subject">Subject</label>
+<select id="subject" name="subject" required="">
+<option value="">Select a topic...</option>
+<option value="General Inquiry">General Inquiry</option>
+<option value="Prayer Request">Prayer Request</option>
+<option value="New Member Information">New Member Information</option>
+<option value="Ministry Information">Ministry Information</option>
+<option value="Event Information">Event Information</option>
+<option value="Other">Other</option>
+</select>
+</div>
+<div class="form-group required">
+<label for="message">Message</label>
+<textarea id="message" name="message" required=""></textarea>
+</div>
+<button class="submit-btn" type="submit">Send Message</button>
+</form>
+</div>
+</div>
+</section>
+<!-- Map Section -->
+<section class="map-section">
+<div class="map-container">
+<h2>Visit Us</h2>
+<iframe allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6207.909459685565!2d-77.0292107!3d38.9250122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b7e1c1091d6b%3A0x785199a699d51b18!2sThe%20Greater%20First%20Baptist%20Church!5e0!3m2!1sen!2sus!4v1770510011876!5m2!1sen!2sus" style="border:0;">
+</iframe>
+</div>
+</section>
+<!-- Footer -->
+<div id="site-footer"></div>
+
+<script src="includes.js"></script></body>
+</html>

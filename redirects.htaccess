@@ -1,0 +1,4 @@
+Redirect 301 newsletter.html /contact_us.html
+Redirect 301 /focus-newsletter /contact_us.html
+Redirect 301 /tithes-and-offerings /give.html
+Redirect 301 /programs /ministries.html

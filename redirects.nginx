@@ -1,0 +1,4 @@
+rewrite ^newsletter.html$ /contact_us.html permanent;
+rewrite ^/focus-newsletter$ /contact_us.html permanent;
+rewrite ^/tithes-and-offerings$ /give.html permanent;
+rewrite ^/programs$ /ministries.html permanent;

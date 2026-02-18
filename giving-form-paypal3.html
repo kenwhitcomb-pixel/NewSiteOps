@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Give Online | The Greater First Baptist Church</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Open+Sans:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<!-- PayPal SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id=AUSZQwVl4rNKe9_r0xZoKGskpeb3wOt78EmpHd6PRpZIVLeMpukf2U1W3oev2OzhJzAB9fsOqIyAEj8b¤cy=USD"></script>
+<style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #8b4513;
+            --accent-color: #c19a6b;
+            --text-dark: #333;
+            --text-light: #666;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --success: #27ae60;
+            --error: #e74c3c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: var(--bg-light);
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem 20px;
+        }
+
+        .form-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 15px 15px 0 0;
+            text-align: center;
+        }
+
+        .form-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        .giving-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group label .required {
+            color: var(--error);
+            margin-left: 3px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Open Sans', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
+        }
+
+        .form-group small {
+            display: block;
+            margin-top: 0.3rem;
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        /* Giving Amounts */
+        .giving-amounts {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .amount-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .amount-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .amount-item label {
+            flex: 1;
+            color: var(--text-dark);
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .amount-item input {
+            width: 120px;
+            text-align: right;
+        }
+
+        /* Total Display */
+        .total-display {
+            background: var(--primary-color);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .total-display label {
+            display: block;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .total-display .total-amount {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        /* PayPal Section */
+        .payment-section {
+            background: #f0f7ff;
+            border: 2px solid #0070ba;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .payment-section h3 {
+            color: #0070ba;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #paypal-button-container {
+            margin-top: 1rem;
+            min-height: 45px;
+        }
+
+        .secure-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 1rem;
+            padding: 0.75rem;
+            background: white;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .secure-badge i {
+            color: #27ae60;
+            font-size: 1.2rem;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: #e8f5e9;
+            border-left: 4px solid var(--success);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .info-box i {
+            color: var(--success);
+            margin-right: 8px;
+        }
+
+        /* Success/Error Messages */
+        .message {
+            display: none;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .message.show {
+            display: block;
+            animation: slideDown 0.5s ease;
+        }
+
+        .message.success {
+            background: var(--success);
+            color: white;
+        }
+
+        .message.error {
+            background: var(--error);
+            color: white;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--accent-color), transparent);
+            margin: 2rem 0;
+        }
+
+        .payment-disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .form-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .giving-form {
+                padding: 1.5rem;
+            }
+
+            .form-row,
+            .amount-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .amount-item input {
+                width: 100px;
+            }
+
+            .total-display .total-amount {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body><div id="site-header"></div>
+<div class="container">
+<div class="form-header">
+<h1><i class="fas fa-heart"></i> Give to The Greater First Baptist Church</h1>
+</div>
+<form class="giving-form" id="givingForm">
+<!-- Personal Information -->
+<div class="form-section">
+<h2 class="section-title">Personal Information</h2>
+<div class="form-row">
+<div class="form-group">
+<label for="firstName">First Name <span class="required">*</span></label>
+<input id="firstName" name="firstName" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="lastName">Last Name <span class="required">*</span></label>
+<input id="lastName" name="lastName" required="" type="text"/>
+</div>
+</div>
+<div class="form-group">
+<label for="email">Email <span class="required">*</span></label>
+<input id="email" name="email" required="" type="email"/>
+<small>Receipt will be sent to this email</small>
+</div>
+<div class="form-group">
+<label for="phone">Phone Number <span class="required">*</span></label>
+<input id="phone" name="phone" placeholder="202-555-1234" required="" type="tel"/>
+</div>
+<div class="form-group">
+<label for="envelope">Envelope # (Optional)</label>
+<input id="envelope" name="envelope" placeholder="Optional" type="text"/>
+</div>
+</div>
+<div class="divider"></div>
+<!-- Giving Amounts -->
+<div class="form-section">
+<h2 class="section-title">Giving Amounts</h2>
+<div class="info-box">
+<i class="fas fa-info-circle"></i>
+                    Enter amounts for each category. Total will be calculated automatically.
+                </div>
+<div class="giving-amounts">
+<div class="amount-grid">
+<div class="amount-item">
+<label for="tithes">Tithes</label>
+<input id="tithes" min="0" name="tithes" placeholder="0.00" step="0.01" type="number" value="0"/>
+</div>
+<div class="amount-item">
+<label for="offering">Offering</label>
+<input id="offering" min="0" name="offering" placeholder="0.00" step="0.01" type="number" value="0"/>
+</div>
+<div class="amount-item">
+<label for="mission">Mission</label>
+<input id="mission" min="0" name="mission" placeholder="0.00" step="0.01" type="number" value="0"/>
+</div>
+<div class="amount-item">
+<label for="scholarship">Scholarship</label>
+<input id="scholarship" min="0" name="scholarship" placeholder="0.00" step="0.01" type="number" value="0"/>
+</div>
+<div class="amount-item">
+<label for="elevator">Elevator</label>
+<input id="elevator" min="0" name="elevator" placeholder="0.00" step="0.01" type="number" value="0"/>
+</div>
+<div class="amount-item">
+<label for="buildingFund">Building Fund</label>
+<input id="buildingFund" min="0" name="buildingFund" placeholder="0.00" step="0.01" type="number" value="0"/>
+</div>
+<div class="amount-item">
+<label for="specialGuest">Special Guest</label>
+<input id="special" min="0" name="special" placeholder="0.00" step="0.01" type="number" value="0"/>
+</div>
+<div class="amount-item">
+<label for="pastorsLoveOffering">Pastors Love Offering</label>
+<input id="special" min="0" name="special" placeholder="0.00" step="0.01" type="number" value="0"/>
+</div>
+<div class="amount-item">
+<label for="special">Special</label>
+<input id="special" min="0" name="special" placeholder="0.00" step="0.01" type="number" value="0"/>
+</div>
+</div>
+</div>
+<!-- Total Display -->
+<div class="total-display">
+<label>Total Giving Amount</label>
+<div class="total-amount">$<span id="totalAmount">0.00</span></div>
+</div>
+</div>
+<div class="divider"></div>
+<!-- PayPal Payment Section -->
+<div class="form-section">
+<div class="payment-section">
+<h3><i class="fab fa-paypal"></i> Complete Payment</h3>
+<p style="margin-bottom: 1rem; color: #666;">
+                        Click the PayPal button below to complete your donation securely.
+                    </p>
+<!-- PayPal Button Container -->
+<div id="paypal-button-container"></div>
+<div class="secure-badge">
+<i class="fas fa-lock"></i>
+<span>Secure payment powered by PayPal. Pay with PayPal, debit card, or credit card.</span>
+</div>
+</div>
+</div>
+<!-- Messages -->
+<div class="message success" id="successMessage">
+<i class="fas fa-check-circle" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+<h3>Thank You for Your Generous Gift!</h3>
+<p>Your payment has been processed successfully. A receipt has been sent to your email.</p>
+</div>
+<div class="message error" id="errorMessage">
+<i class="fas fa-exclamation-circle" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+<h3>Payment Not Completed</h3>
+<p id="errorText">Please try again or contact the church office if the problem persists.</p>
+</div>
+</form>
+</div>
+<script>
+        // Calculate total
+        const amountInputs = document.querySelectorAll('.amount-item input');
+        const totalDisplay = document.getElementById('totalAmount');
+
+        function calculateTotal() {
+            let total = 0;
+            amountInputs.forEach(input => {
+                const value = parseFloat(input.value) || 0;
+                total += value;
+            });
+            totalDisplay.textContent = total.toFixed(2);
+            return total;
+        }
+
+        amountInputs.forEach(input => {
+            input.addEventListener('input', calculateTotal);
+        });
+
+        // Get form data
+        function getFormData() {
+            const formData = new FormData(document.getElementById('givingForm'));
+            return Object.fromEntries(formData);
+        }
+
+        // PayPal Integration
+        paypal.Buttons({
+            // Create order
+            createOrder: function(data, actions) {
+                const total = calculateTotal();
+                const formData = getFormData();
+
+                // Validate
+                if (total <= 0) {
+                    alert('Please enter at least one giving amount greater than $0.00');
+                    return actions.reject();
+                }
+
+                if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone) {
+                    alert('Please fill in all required fields (marked with *)');
+                    return actions.reject();
+                }
+
+                // Create PayPal order
+                return actions.order.create({
+                    purchase_units: [{
+                        description: `Church Giving - ${formData.firstName} ${formData.lastName}`,
+                        amount: {
+                            value: total.toFixed(2),
+                            currency_code: 'USD',
+                            breakdown: {
+                                item_total: {
+                                    value: total.toFixed(2),
+                                    currency_code: 'USD'
+                                }
+                            }
+                        },
+                        items: buildItemsList(formData, total),
+                        custom_id: formData.envelope || '',
+                        invoice_id: 'GFBC-' + Date.now()
+                    }],
+                    application_context: {
+                        shipping_preference: 'NO_SHIPPING'
+                    }
+                });
+            },
+
+            // Handle approval
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    // Payment successful
+                    console.log('Payment completed:', details);
+                    
+                    // Send confirmation to your server (optional)
+                    sendConfirmation(details);
+                    
+                    // Show success message
+                    showSuccess();
+                    
+                    // Reset form
+                    document.getElementById('givingForm').reset();
+                    calculateTotal();
+                });
+            },
+
+            // Handle errors
+            onError: function(err) {
+                console.error('PayPal error:', err);
+                showError('An error occurred during payment. Please try again.');
+            },
+
+            // Handle cancel
+            onCancel: function(data) {
+                showError('Payment was cancelled. Please try again when ready.');
+            },
+
+            // Button style
+            style: {
+                layout: 'vertical',
+                color: 'gold',
+                shape: 'rect',
+                label: 'paypal',
+                height: 45
+            }
+        }).render('#paypal-button-container');
+
+        // Build items list for PayPal
+        function buildItemsList(formData, total) {
+            const items = [];
+            
+            const categories = {
+                tithes: 'Tithes',
+                offering: 'Offering',
+                mission: 'Mission',
+                scholarship: 'Scholarship',
+                elevator: 'Elevator',
+                buildingFund: 'Building Fund',
+                special: 'Special'
+            };
+
+            for (const [key, label] of Object.entries(categories)) {
+                const amount = parseFloat(formData[key]) || 0;
+                if (amount > 0) {
+                    items.push({
+                        name: label,
+                        unit_amount: {
+                            value: amount.toFixed(2),
+                            currency_code: 'USD'
+                        },
+                        quantity: '1'
+                    });
+                }
+            }
+
+            return items;
+        }
+
+        // Send confirmation to your server
+        async function sendConfirmation(details) {
+            const formData = getFormData();
+            
+            try {
+                // OPTIONAL: Send to your server for record keeping
+                await fetch('/api/record-donation', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        paypalOrderId: details.id,
+                        payerEmail: details.payer.email_address,
+                        payerName: details.payer.name.given_name + ' ' + details.payer.name.surname,
+                        amount: details.purchase_units[0].amount.value,
+                        formData: formData,
+                        timestamp: new Date().toISOString()
+                    })
+                });
+            } catch (error) {
+                console.error('Error recording donation:', error);
+                // Still show success even if recording fails
+            }
+        }
+
+        function showSuccess() {
+            document.getElementById('successMessage').classList.add('show');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(() => {
+                document.getElementById('successMessage').classList.remove('show');
+            }, 8000);
+        }
+
+        function showError(message) {
+            document.getElementById('errorText').textContent = message;
+            document.getElementById('errorMessage').classList.add('show');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(() => {
+                document.getElementById('errorMessage').classList.remove('show');
+            }, 8000);
+        }
+
+        // Initialize total
+        calculateTotal();
+    </script>
+<div id="site-footer"></div><script src="includes.js"></script></body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Give | The Greater First Baptist Church</title>
+<link href="styles.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Open+Sans:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<style>
+        .give-hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #8b4513 100%);
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .give-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* QR Code Section */
+        .qr-section {
+            background: white;
+            padding: 4rem 0;
+        }
+
+        .qr-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #8b4513 0%, #c19a6b 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            text-align: center;
+            color: white;
+        }
+
+        .qr-display {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            display: inline-block;
+            margin: 2rem 0;
+        }
+
+        .qr-code-img {
+            width: 300px;
+            height: 300px;
+        }
+
+        .qr-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .qr-step {
+            background: rgba(255,255,255,0.15);
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: white;
+            color: #8b4513;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+
+        /* Digital Card Form */
+        .card-form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #8b4513;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
+            background: #8b4513;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background: #c19a6b;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .qr-code-img {
+                width: 250px;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation -->
+<div id="site-header"></div>
+<!-- Hero -->
+<section class="give-hero">
+<div class="container">
+<h1><i class="fas fa-heart"></i> Support Our Ministry</h1>
+<p>Your generosity helps us love God, love others, and magnify Jesus Christ</p>
+</div>
+</section>
+<!-- QR Code Section -->
+<section class="qr-section">
+<div class="container">
+<div class="qr-container">
+<h2><i class="fas fa-qrcode"></i> Give Instantly with Your Phone</h2>
+<p>Scan the QR code with your smartphone to submit your digital giving card</p>
+<div class="qr-display">
+<a href="https://thegfbcdc.org/giving-form-paypal3.html">
+<img alt="Scan to Give" class="qr-code-img" src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&amp;data=giving-form-paypal3.html"/>
+</a>
+</div>
+<div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 10px; margin-top: 2rem;">
+<h4 style="margin-bottom: 1rem;"><i class="fas fa-mobile-alt"></i> How to Use</h4>
+<div class="qr-steps">
+<div class="qr-step">
+<div class="step-number">1</div>
+<p>Open Camera</p>
+</div>
+<div class="qr-step">
+<div class="step-number">2</div>
+<p>Point &amp; Scan</p>
+</div>
+<div class="qr-step">
+<div class="step-number">3</div>
+<p>Tap Link</p>
+</div>
+<div class="qr-step">
+<div class="step-number">4</div>
+<p>Complete Form</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Digital Card Form -->
+<section style="background: #f8f9fa; padding: 4rem 0;">
+<div class="container">
+<div class="card-form-container">
+<h2 style="text-align: center; margin-bottom: 2rem;"><i class="fas fa-credit-card"></i> Digital Giving Card</h2>
+<form id="givingForm">
+<div class="form-group">
+<label><i class="fas fa-hand-holding-heart"></i> Type of Giving *</label>
+<select required="">
+<option value="">Select...</option>
+<option>Tithe</option>
+<option>Offering</option>
+<option>Mission</option>
+<option>Building Fund</option>
+</select>
+</div>
+<div class="form-group">
+<label><i class="fas fa-user"></i> Full Name *</label>
+<input required="" type="text"/>
+</div>
+<div class="form-group">
+<label><i class="fas fa-envelope"></i> Email *</label>
+<input required="" type="email"/>
+</div>
+<div class="form-group">
+<label><i class="fas fa-dollar-sign"></i> Amount *</label>
+<input min="1" required="" step="0.01" type="number"/>
+</div>
+<div class="form-group">
+<label><i class="fas fa-comment"></i> Message (Optional)</label>
+<textarea rows="4"></textarea>
+</div>
+<button class="btn-submit" type="submit">
+<i class="fas fa-paper-plane"></i> Submit Giving Card
+                    </button>
+</form>
+</div>
+</div>
+</section>
+<script>
+        document.getElementById('givingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            window.location.href = 'giving-form-paypal3.html';
+        });
+    </script>
+<div id="site-footer"></div><script src="includes.js"></script></body>
+</html>

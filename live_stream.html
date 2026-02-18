@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Live Stream | The Greater First Baptist Church</title>
+<link href="styles.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Open+Sans:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        .stream-hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #8b4513 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .stream-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .live-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #e74c3c;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+
+        .live-dot {
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-radius: 50%;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .video-main {
+            background: #000;
+            padding: 3rem 0;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .stream-options {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .platform-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .platform-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .platform-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .platform-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .platform-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .chat-section {
+            background: white;
+            padding: 4rem 0;
+        }
+
+        .sermon-archive {
+            background: #f8f9fa;
+            padding: 4rem 0;
+        }
+
+        .archive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .sermon-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .sermon-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .sermon-thumbnail {
+            position: relative;
+            padding-bottom: 56.25%;
+            background: #ddd;
+            overflow: hidden;
+        }
+
+        .sermon-thumbnail img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(231, 76, 60, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        .sermon-info {
+            padding: 1.5rem;
+        }
+
+        .sermon-info h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .sermon-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .upcoming-services {
+            background: linear-gradient(135deg, #8b4513 0%, #2c3e50 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .upcoming-services h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-time {
+            display: inline-block;
+            background: rgba(255,255,255,0.1);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            margin: 0.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .service-time strong {
+            display: block;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation -->
+<div id="site-header"></div>
+<!-- Stream Hero -->
+<section class="stream-hero">
+<div class="container">
+<div class="live-indicator" id="liveIndicator">
+<span class="live-dot"></span>
+<span>LIVE NOW</span>
+</div>
+<h1>Join Us for Worship Online</h1>
+<p style="font-size: 1.2rem; opacity: 0.9; max-width: 700px; margin: 0 auto;">
+                Experience the presence of God from wherever you are. Watch our services live every Sunday morning.
+            </p>
+</div>
+</section>
+<!-- Streaming Platforms -->
+<section class="stream-options">
+<div class="container">
+<div class="section-header">
+<h2>Watch on Your Favorite Platform</h2>
+<div class="divider"></div>
+<p style="max-width: 700px; margin: 2rem auto 0; color: #666;">
+                    We stream live on multiple platforms. Choose the one that works best for you!
+                </p>
+</div>
+<div class="platform-grid">
+<div class="platform-card">
+<div class="platform-icon">
+<svg fill="#ff0000" height="80" viewbox="0 0 24 24" width="80">
+<path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path>
+</svg>
+</div>
+<h3>YouTube Live</h3>
+<p>Watch on YouTube and access our complete sermon archive</p>
+<a class="btn btn-primary" href="https://www.youtube.com/@thegreaterfirstbaptistchur2346/streams" target="_blank">Watch on YouTube</a>
+</div>
+<div class="platform-card">
+<div class="platform-icon">
+<svg fill="#1877f2" height="80" viewbox="0 0 24 24" width="80">
+<path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+</svg>
+</div>
+<h3>Facebook Live</h3>
+<p>Join us on Facebook and interact with our community during the service</p>
+<a class="btn btn-primary" href="https://www.facebook.com/share/1CBxfB8q3P/?mibextid=wwXIfr" target="_blank">Watch on Facebook</a>
+</div>
+</div>
+<!-- Upcoming Services -->
+<div class="upcoming-services">
+<h3>Upcoming Services</h3>
+<div style="margin-top: 1.5rem;">
+<div class="service-time">
+<strong>📖 Sunday School</strong>
+<span>Every Sunday at 8:45 AM EST</span>
+</div>
+<div class="service-time">
+<strong>⛪ Sunday Worship</strong>
+<span>Every Sunday at 10:00 AM EST</span>
+</div>
+<div class="service-time">
+<strong>📚 Bible Study</strong>
+<span>Wednesdays at 7:00 PM EST</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Sermon Archive -->
+<section class="sermon-archive">
+<div class="container">
+<div class="section-header">
+<h2>Recent Sermons</h2>
+<div class="divider"></div>
+<p style="max-width: 700px; margin: 2rem auto 0; color: #666;">
+                    Missed a service? Catch up on recent messages.
+                </p>
+</div>
+<div class="archive-grid">
+<div class="sermon-card">
+<div class="sermon-thumbnail">
+<img alt="Sermon" src="images/Front.jpg"/>
+<a aria-label="Watch sermon on YouTube" class="play-overlay" href="https://www.youtube.com/watch?v=YgryT6EXlLQ" target="_blank">
+        ▶
+      </a>
+</div>
+<div class="sermon-info">
+<h4>Living in Faith Everyday</h4>
+<p class="sermon-meta">📅 Sunday, February 1, 2026 | Pastor Dr. Queen</p>
+<p>Exploring what it means to walk in faith daily and trust God's plan for our lives.</p>
+</div>
+</div>
+<div class="sermon-card">
+<div class="sermon-thumbnail">
+<img alt="Sermon" src="images/Front.jpg"/>
+<a aria-label="Watch sermon on YouTube" class="play-overlay" href="https://www.youtube.com/watch?v=O57G1Hy_O_A" target="_blank">
+        ▶
+      </a>
+</div>
+<div class="sermon-info">
+<h4>Magnifying Jesus Christ</h4>
+<p class="sermon-meta">📅 Sunday, January 25, 2026 | Pastor Dr. Queen</p>
+<p>How we can glorify Jesus in everything we do and share His love with others.</p>
+</div>
+</div>
+<div class="sermon-card">
+<div class="sermon-thumbnail">
+<img alt="Sermon" src="images/Front.jpg"/>
+<a aria-label="Watch sermon on YouTube" class="play-overlay" href="https://www.youtube.com/watch?v=po9xUAc4LxA" target="_blank">
+        ▶
+      </a>
+</div>
+<div class="sermon-info">
+<h4>New Year, New Vision</h4>
+<p class="sermon-meta">📅 Sunday, January 19, 2025 | Pastor Dr. Queen</p>
+<p>Starting the new year with God's vision and purpose for our lives and church.</p>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<div id="site-footer"></div>
+
+<script>
+        // Check if currently streaming (simplified - you'd use actual API check)
+        function checkLiveStatus() {
+            const now = new Date();
+            const day = now.getDay(); // 0 = Sunday
+            const hour = now.getHours();
+            
+            // Show "LIVE NOW" during service times (Sundays 11 AM - 1 PM EST)
+            if (day === 0 && hour >= 11 && hour < 13) {
+                document.getElementById('liveIndicator').style.display = 'inline-flex';
+            } else {
+                document.getElementById('liveIndicator').innerHTML = '<span>Next Live: Sunday 10:00 AM EST</span>';
+                document.getElementById('liveIndicator').style.background = '#8b4513';
+            }
+        }
+
+        checkLiveStatus();
+    </script>
+<!-- Floating Our History Button -->
+<a aria-label="Our History" class="floating-history-btn" href="history.html">
+<i class="fas fa-book-open"></i>
+<span>History</span>
+</a>
+<!-- Floating Give Button -->
+<a aria-label="Give Now" class="floating-give-btn" href="give_qr.html">
+<i class="fas fa-heart"></i>
+<span>Give</span>
+</a>
+</div></section><script src="includes.js"></script></body>
+</html>

@@ -1,0 +1,5 @@
+from,to,code
+newsletter.html,/contact_us.html,301
+/focus-newsletter,/contact_us.html,301
+/tithes-and-offerings,/give.html,301
+/programs,/ministries.html,301
