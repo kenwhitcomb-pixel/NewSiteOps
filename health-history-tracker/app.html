@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Health History Tracker</title>
+  <link rel="stylesheet" href="app.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">Health History Tracker</div>
+    <div class="header-controls">
+      <label for="accountSwitcher" class="sr-only">Active account</label>
+      <select id="accountSwitcher" aria-label="Active account switcher"></select>
+      <button id="voiceBtn" class="btn" type="button">🎙 Voice Input</button>
+      <button id="audioPromptBtn" class="btn" type="button">🔊 Audio Prompts</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav class="sidebar" aria-label="Main navigation">
+      <button data-page="dashboard" class="nav-btn active">Dashboard</button>
+      <button data-page="timeline" class="nav-btn">Timeline</button>
+      <button data-page="medications" class="nav-btn">Medications</button>
+      <button data-page="appointments" class="nav-btn">Appointments</button>
+      <button data-page="conditions" class="nav-btn">Conditions</button>
+      <button data-page="surgeries" class="nav-btn">Surgeries and Procedures</button>
+      <button data-page="providers" class="nav-btn">Providers</button>
+      <button data-page="documents" class="nav-btn">Documents</button>
+      <button data-page="emergency" class="nav-btn">Emergency Summary</button>
+      <button data-page="settings" class="nav-btn">Settings</button>
+      <button data-page="members" class="nav-btn" id="membersNav">Account and Members</button>
+    </nav>
+
+    <main class="content">
+      <section id="dashboard" class="page active">
+        <h1>Dashboard</h1>
+        <div class="card-grid">
+          <button class="card">+ Quick Add Medication</button>
+          <button class="card">+ Quick Add Appointment</button>
+          <button class="card">+ Quick Add Condition</button>
+        </div>
+      </section>
+
+      <section id="timeline" class="page">
+        <h1>Timeline</h1>
+        <p>Cross-entity timeline with filters by type, date, and provider.</p>
+      </section>
+
+      <section id="medications" class="page">
+        <h1>Medications</h1>
+        <p>Current dose is derived from latest confirmed MedicationDoseHistory record.</p>
+        <ul id="medicationList" class="list"></ul>
+      </section>
+
+      <section id="appointments" class="page">
+        <h1>Appointments</h1>
+        <ul id="appointmentList" class="list"></ul>
+      </section>
+
+      <section id="conditions" class="page">
+        <h1>Conditions</h1>
+        <ul id="conditionList" class="list"></ul>
+      </section>
+
+      <section id="surgeries" class="page">
+        <h1>Surgeries and Procedures</h1>
+        <p>Track procedures, outcomes, complications, and linked documents.</p>
+      </section>
+
+      <section id="providers" class="page">
+        <h1>Providers</h1>
+        <p>Manage PCP, specialists, dentists, therapists, and others.</p>
+      </section>
+
+      <section id="documents" class="page">
+        <h1>Documents</h1>
+        <p>Upload labs, imaging, after-visit summaries, referrals, and discharge docs.</p>
+      </section>
+
+      <section id="emergency" class="page">
+        <h1>Emergency Summary</h1>
+        <p>Generate a patient-ready emergency summary and export to PDF.</p>
+        <button class="btn" type="button">Export PDF</button>
+      </section>
+
+      <section id="settings" class="page">
+        <h1>Settings</h1>
+        <label><input type="checkbox" id="voiceEnabled" checked /> Voice input enabled</label>
+        <label><input type="checkbox" id="audioEnabled" /> Audio prompts enabled</label>
+        <label><input type="checkbox" id="confirmBeforeSave" checked /> Confirm before save</label>
+      </section>
+
+      <section id="members" class="page">
+        <h1>Account and Members</h1>
+        <p class="muted">Visible only to AccountOwner and AccountAdmin.</p>
+        <div class="member-actions">
+          <button class="btn">Invite Member</button>
+          <button class="btn">Change Role</button>
+          <button class="btn danger">Remove Member</button>
+        </div>
+        <ul id="memberList" class="list"></ul>
+      </section>
+
+      <section id="voiceReview" class="page">
+        <h1>Voice Review Card</h1>
+        <p id="voicePreview"></p>
+        <button class="btn" id="confirmVoice">Confirm and Save</button>
+        <button class="btn danger" id="rejectVoice">Reject</button>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
